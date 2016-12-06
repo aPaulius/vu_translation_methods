@@ -1,0 +1,116 @@
+# kintamieji: skaicius, eilute
+# salyginis sakinys: jei
+# ciklo sakinys: kol
+# ivedimo funkcija: ivesti($tekstas)
+# isvedimo funkcija: spausdinti($tekstas)
+# funkciju iskvietimas
+# aritmetines operacijos: sudetis, daugyba
+# priskyrimo sakinys
+# return sakinys: grazinti
+# sakiniai baigiasi ";" simboliu
+$i = $k + 54
+
+
+/////////////////KODAS///////////////////////////
+
+
+<kodas>::=<funkcija>|<kodas><funkcija>
+
+<fragmentas>::=<programosSakinys>|<fragmentas><programosSakinys>
+
+!!! <programosSakinys>::=<priskyrimas>;|<sąlygosSakinys>|<cikloSakinys>|<funkcijosIškvietimas>;|<įvedimas>;|<išvedimas>;|<grįžimas>;
+
+
+/////////////////SISTEMINIAI SAKINIAI///////////
+
+
+<įvedimas>::=ivesti('('<eilutė>|<kintamojoVardas2>')')
+
+<išvedimas>::=spausdinti(<eilutė>|<kintamojoVardas2>)
+
+<grįžimas>::=grazinti [<parametras>]
+
+
+//////////////////FUNKCIJA///////////////////////
+
+
+<funkcija>::=funkcija <funkcijosVardas>([<formalūsArgumentai>]){<fragmentas>}
+
+<funkcijosIškvietimas>::=<funkcijosVardas>([<faktiniaiArgumentai>])
+
+<funkcijosVardas>::=<raidė>|<funkcijosVardas><raidė>|<funkcijosVardas><skaitmuo>
+
+<formalūsArgumentai>::=<kintamojoTipas> <kintamojoVardas>|<formalūsArgumentai>, <kintamojoTipas> <kintamojoVardas>
+
+<faktiniaiArgumentai>::=<parametras>|<faktiniaiArgumentai>, <parametras>
+
+#---<parametras>::=<operandas>|<eilutė>|<kintamojoVardas2>
+
+
+
+
+///////////////////CIKLO SAKINYS/////////////////
+
+
+<cikloSakinys>::=kol (<palyginimas>){<fragmentas>}
+
+
+/////////////////SĄLYGOS SAKINYS////////////////
+
+
+<sąlygosSakinys>::=jei (<palyginimas>) '{' <fragmentas> '}'
+
+<palyginimas>::=<išraiška><palyginimoOperacija><išraiška>
+
+!!! <palyginimoOperacija>::= '>' | '<=' | '<' | '>=' | '!=' | '=='
+
+
+/////////////////OPERACIJOS////////////////////// prioritetai
+
+<priskyrimas>::='eilutė' <kintamojoVardas> = <eilutė>|skaičius <kintamojoVardas> = <išraiška>|<kintamojoTipas> <kintamojoVardas> = <funkcijosIškvietimas>
+
+
+!!! <išraiška>::=<išraiška1> [ <operacija2> <išraiška> ]
+
+!!! <išraiška1>::= <išraiška2> [ <operacija1><išraiška1> ]
+
+!!! <išraiška2>::= <operandas>
+
+!!! <operacija1>::=<operandas> <operatorius1> <operandas>
+
+!!! <operacija2>::=<operandas> <operatorius2> <operandas>
+
+#<daugyba>::=<operandas> * <operandas>
+
+#<sudėtis>::=<operandas> + <operandas>
+
+$a = $a + funkcija(3, a(6+$r)) + 9;
+
+<operandas>::=<kintamojoVardas1>|<skaicius>
+
+!!! <kintamojoTipas>::=eilute|skaicius
+
+!!! <operatorius1>::= * | / | %
+
+!!! <operatorius2>::= + | -
+
+/////////////////KINTAMIEJI//////////////////////
+
+!!!<kintamojoVardas>::=<DOLERIS><raidė>|<kintamojoVardas><raidė>|<kintamojoVardas><skaitmuo>
+
+<skaičius>::=<skaitmuo>|<skaičius><skaitmuo>
+
+!!! <tekstas>::=<skaičius>|<raidė>|<simbolis>|<tekstas><skaičius>|<tekstas><raidė>|<tekstas><simbolis>
+
+<eilutė>::="<tekstas>"
+
+/////////////////SIMBOLIAI///////////////////////
+
+
+<raidė>::=a|A|b|B|c|C|d|D|e|E|f|F|g|G|h|H|i|I|j|J|k|K|l|L|m|M|n|N|o|O|p|P|q|Q|r|R|s|S|t|T|u|U|v|V|w|W|x|X|y|Y|z|Z
+
+<skaitmuo>::=0|1|2|3|4|5|6|7|8|9
+
+!!! <simbolis>::=!|' '|?|^|@|#|%|^|&
+
+<DOLERIS>::=$

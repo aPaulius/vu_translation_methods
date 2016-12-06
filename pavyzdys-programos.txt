@@ -1,0 +1,16 @@
+funkcija spausdinimas(skaicius $a, skaicius $b) {
+	kol ($a < $b +1 ) {
+		spausdinti($a);
+		$a = $a + 1 * $b + a();
+
+		jei ($a == 10) {
+			grazinti "B";
+		}
+	}
+
+	grazinti "A";
+}
+
+funkcija a() {
+
+}
